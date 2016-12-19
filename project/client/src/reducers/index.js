@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import stub from './stub-reducer';
+import words from './words-reducer';
+import { reducer as form } from 'redux-form';
 
 const rootReducer = combineReducers({
-    stub
+    form,
+    words
 });
 
 export default rootReducer;

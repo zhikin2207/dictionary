@@ -1,5 +1,4 @@
 export default {
-    stub: {
-        title: 'Dictionary'
-    }
+    words: [
+    ]
 };

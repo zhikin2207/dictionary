@@ -1,1 +1,1 @@
-export const STUB = 'STUB';
+export const WordsLoaded = 'WordsLoaded';
