@@ -1,4 +1,12 @@
 export default {
-    words: [
-    ]
+    dictionary: {
+        editKey: '',
+        words: [
+        ]
+    },
+    user: {
+        authenticated: false,
+        uid: '',
+        displayName: ''
+    }
 };

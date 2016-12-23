@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import NewWordForm from './new-word-form';
+import * as dictionaryActions from '../../../actions/dictionary-actions';
 
 class NewWordPage extends React.Component {
     constructor(props, context) {
@@ -10,6 +11,7 @@ class NewWordPage extends React.Component {
     }
 
     handleFormSubmit(word) {
+        this.props.add(word);
     }
 
     render() {
@@ -19,7 +21,4 @@ class NewWordPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-});
-
-export default connect(mapStateToProps)(NewWordPage);
+export default connect(null, dictionaryActions)(NewWordPage);

@@ -11,14 +11,14 @@ const NewWordForm = (props) => {
             <h2>Новое слово</h2>
 
             <div className="form-group">
-                <Field name="value" type="text" component={TextBox} label="Слово" />
+                <Field name="value" type="text" component={TextBox} label="Word" />
             </div>
 
             <div className="form-group">
-                <Field name="translation" type="text" component={TextBox} label="Перевод" />
+                <Field name="translation" type="text" component={TextBox} label="Translation" />
             </div>
 
-            <button type="submit" className="btn btn-default pull-right">Создать</button>
+            <button type="submit" className="btn btn-default pull-right">Create</button>
         </form>
     );
 };

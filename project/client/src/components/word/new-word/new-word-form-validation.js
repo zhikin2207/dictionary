@@ -1,8 +1,8 @@
 const validate = (values) => {
     const errors = {};
 
-    if (!values.value) errors.value = 'Введите слово';
-    if (!values.translation) errors.translation = 'Введите перевод слова';
+    if (!values.value) errors.value = 'Please, input a word';
+    if (!values.translation) errors.translation = 'Please, input a word translation';
 
     return errors;
 }

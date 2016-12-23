@@ -1,1 +1,7 @@
-export const WordsLoaded = 'WordsLoaded';
+export const WORDS_LOADED = 'WORDS_LOADED';
+export const WORD_REMOVED = 'WORD_REMOVED';
+export const WORD_EDIT_START = 'WORD_EDIT_START';
+export const WORD_EDIT_CANCEL = 'WORD_EDIT_CANCEL';
+
+export const USER_SIGNED_IN = 'USER_SIGNED_IN';
+export const USER_SIGNED_OUT = 'USER_SIGNED_OUT';

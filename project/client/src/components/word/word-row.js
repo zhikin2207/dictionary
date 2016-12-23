@@ -1,16 +1,19 @@
 import React from 'react';
 
-const WordRow = ({word}) => {
+const WordRow = ({word, onRemove, onChange}) => {
+    const removeWord = () => onRemove(word.key);
+    const changeWord = () => onChange(word.key);
+
     return (
-        <tr>
-            <td>{word.value}</td>
-            <td>{word.translation}</td>
-            <td>
-                <a href="#">Изменить</a>
-                {' | '}
-                <a href="#">Удалить</a> 
-            </td>
-        </tr>
+        <div className="row">
+            <hr/>
+            <div className="col-md-4">{word.value}</div>
+            <div className="col-md-4">{word.translation}</div>
+            <div className="col-md-4">
+                <button type="button" className="btn btn-link" onClick={changeWord}>Change</button>
+                <button type="button" className="btn btn-link" onClick={removeWord}>Remove</button> 
+            </div>
+        </div>
     );
 };
 
