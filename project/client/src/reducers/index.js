@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import dictionary from './dictionary-reducer';
 import user from './user-reducer';
-import { reducer as form } from 'redux-form';
+import form from './form-reducer';
 
 const rootReducer = combineReducers({
     form,

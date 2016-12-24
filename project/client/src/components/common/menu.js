@@ -11,7 +11,6 @@ const Menu = ({authenticated, displayName, auth}) => {
                 <ul className="nav navbar-nav">
                     <li><IndexLink to="/" className="navbar-link">Home</IndexLink></li>
                     {authenticated && <li><Link to="/words" className="navbar-link">Words</Link></li>}
-                    {authenticated && <li><Link to="/word-new" className="navbar-link">Create word</Link></li>}
                 </ul>
                 <ul className="nav navbar-nav pull-right">
                     {!authenticated && <li><a href="#" onClick={auth.signIn}>Sign In</a></li>}

@@ -2,17 +2,15 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import TextBox from '../common/form/text-box';
 
-class WordRowEdit extends React.Component {
+class WordRowNew extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         this.handleSubmit = this.props.handleSubmit;
         this.onCancel = this.props.onCancel;
         this.onSave = this.props.onSave;
-    }
 
-    componentWillMount() {
-        this.props.initialize(this.props.word);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     render() {
@@ -27,15 +25,18 @@ class WordRowEdit extends React.Component {
                         <Field name="translation" type="text" component={TextBox} label="Translation"/>
                     </div>
                     <div className="col-md-4">
-                        <button type="submit" className="btn btn-link">Save</button>
-                        <button type="button" className="btn btn-link" onClick={this.onCancel}>Cancel</button>
+                        <button type="submit" className="btn btn-success">Add</button>
                     </div>
                 </form>
             </div>
         );
     }
+
+    onSubmit() {
+        this.props.handleSubmit(this.props.onSave);
+    }
 }
 
 export default reduxForm({
-    form: 'edit-word-form'
-})(WordRowEdit);
+    form: 'new-word-form'
+})(WordRowNew);

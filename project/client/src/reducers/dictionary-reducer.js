@@ -17,6 +17,20 @@ export default function(state = initialState.dictionary, action) {
             return Object.assign({}, state, { editKey: action.key });
         case types.WORD_EDIT_CANCEL:
             return Object.assign({}, state, { editKey: '' });
+        case types.WORD_UPDATED: {
+            const index = state.words.findIndex(word => word.key === action.word.key);
+
+            return Object.assign({}, state, { words: [
+                ...state.words.slice(0, index),
+                Object.assign({}, state.words[index], action.word),
+                ...state.words.slice(index + 1)
+            ]});
+        }
+        case types.WORD_ADDED:
+            return Object.assign({}, state, { words: [
+                action.word,
+                ...state.words
+            ]});
     }
 
     return state;

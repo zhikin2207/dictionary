@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 
 export default function(ComposedComponent) {
     class Authentication extends React.Component {
@@ -11,7 +11,7 @@ export default function(ComposedComponent) {
             }
         }
 
-        compoentWillUpdate(nextProps) {
+        componentWillUpdate(nextProps) {
             const authenticated = nextProps.authenticated || this.hasLocalStorageUser();
 
             if (!authenticated) {
@@ -38,7 +38,7 @@ export default function(ComposedComponent) {
     }
 
     Authentication.contextTypes = {
-        router: React.PropTypes.object
+        router: React.PropTypes.object.isRequired
     };
 
     const mapStateToProps = (state) => ({

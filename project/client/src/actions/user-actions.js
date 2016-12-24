@@ -13,7 +13,7 @@ export const signOutSuccess = () => ({
 
 export const signIn = () => {
     return dispatch => {
-        var provider = new firebase.auth.GoogleAuthProvider();
+        const provider = new firebase.auth.GoogleAuthProvider();
 
         firebase.auth().signInWithPopup(provider).then(function(result) {
             const user = result.user;
