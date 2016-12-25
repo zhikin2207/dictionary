@@ -9,8 +9,6 @@ class WordRowNew extends React.Component {
         this.handleSubmit = this.props.handleSubmit;
         this.onCancel = this.props.onCancel;
         this.onSave = this.props.onSave;
-
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
     render() {
@@ -30,10 +28,6 @@ class WordRowNew extends React.Component {
                 </form>
             </div>
         );
-    }
-
-    onSubmit() {
-        this.props.handleSubmit(this.props.onSave);
     }
 }
 

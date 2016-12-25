@@ -10,34 +10,14 @@ class WordsPage extends React.Component {
         super(props, context);
 
         this.onWordRemove = this.onWordRemove.bind(this);
-        this.onWordChange = this.onWordChange.bind(this);
-        this.onWordCancelChange = this.onWordCancelChange.bind(this);
-        this.onWordSave = this.onWordSave.bind(this);
-        this.onWordAdd = this.onWordAdd.bind(this);
+        this.onWordEditStart = this.onWordEditStart.bind(this);
+        this.onWordEditCancel = this.onWordEditCancel.bind(this);
+        this.onWordEditComplete = this.onWordEditComplete.bind(this);
+        this.onWordAdded = this.onWordAdded.bind(this);
     }
 
     componentDidMount() {
         this.props.dictionaryActions.load();
-    }
-
-    onWordRemove(key) {
-        this.props.dictionaryActions.remove(key);
-    }
-
-    onWordChange(key) {
-        this.props.dictionaryActions.wordEditStart(key);
-    }
-
-    onWordCancelChange() {
-        this.props.dictionaryActions.wordEditCancel();
-    }
-
-    onWordSave(word) {
-        this.props.dictionaryActions.update(word);
-    }
-
-    onWordAdd(word) {
-        this.props.dictionaryActions.add(word);
     }
 
     render() {
@@ -55,17 +35,37 @@ class WordsPage extends React.Component {
                     </div>
                 </div>
 
-                <WordRowNew onSave={this.onWordAdd} />
+                <WordRowNew onSave={this.onWordAdded} />
 
                 <WordList
                     words={this.props.words} 
                     editKey={this.props.editKey} 
                     onWordRemove={this.onWordRemove} 
-                    onWordChange={this.onWordChange}
-                    onWordCancelChange={this.onWordCancelChange}
-                    onWordSave={this.onWordSave} />
+                    onEditStart={this.onWordEditStart}
+                    onEditCancel={this.onWordEditCancel}
+                    onEditComplete={this.onWordEditComplete} />
             </div>
         );
+    }
+
+    onWordRemove(key) {
+        this.props.dictionaryActions.remove(key);
+    }
+
+    onWordEditStart(key) {
+        this.props.dictionaryActions.wordEditStart(key);
+    }
+
+    onWordEditCancel() {
+        this.props.dictionaryActions.wordEditCancel();
+    }
+
+    onWordEditComplete(word) {
+        this.props.dictionaryActions.update(word);
+    }
+
+    onWordAdded(word) {
+        this.props.dictionaryActions.add(word);
     }
 }
 
