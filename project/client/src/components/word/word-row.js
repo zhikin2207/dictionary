@@ -1,19 +1,24 @@
 import React from 'react';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const buttonStyle = {
+    margin: 12
+};
 
 const WordRow = ({word, onRemove, onEditStart}) => {
     const removeWord = () => onRemove(word.key);
     const editWord = () => onEditStart(word.key);
 
     return (
-        <div className="row">
-            <hr/>
-            <div className="col-md-4">{word.value}</div>
-            <div className="col-md-4">{word.translation}</div>
-            <div className="col-md-4">
-                <button type="button" className="btn btn-link" onClick={editWord}>Edit</button>
-                <button type="button" className="btn btn-link" onClick={removeWord}>Remove</button> 
-            </div>
-        </div>
+        <TableRow>
+            <TableRowColumn>{word.value}</TableRowColumn>
+            <TableRowColumn>{word.translation}</TableRowColumn>
+            <TableRowColumn>
+                <RaisedButton label="Edit" style={buttonStyle} onClick={editWord} />
+                <RaisedButton label="Remove" style={buttonStyle} onClick={removeWord}/>
+            </TableRowColumn>
+        </TableRow>
     );
 };
 

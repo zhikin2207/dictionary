@@ -1,20 +1,23 @@
 import React from 'react';
 import WordRow from './word-row';
-import WordRowEdit from './word-row-edit';
+import EditWordForm from './edit-word/edit-word-form';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 
 const WordList = ({words, editKey, onWordRemove, onEditStart, onEditCancel, onEditComplete}) => {
     const renderWords = (word) => {
         if (word.key === editKey) {
-            return <WordRowEdit word={word} key={word.key} onEditCancel={onEditCancel} onEditComplete={onEditComplete}/>;
+            return <ListItem><EditWordForm word={word} key={word.key} onEditCancel={onEditCancel} onEditComplete={onEditComplete}/></ListItem>;
         } else {
-            return <WordRow word={word} key={word.key} onRemove={onWordRemove} onEditStart={onEditStart} />;
+            return <ListItem><WordRow word={word} key={word.key} onRemove={onWordRemove} onEditStart={onEditStart} /></ListItem>;
         }
     };
 
     return (
-        <div>
+        <List>
+            <Subheader>Words</Subheader>
             {words.map(renderWords)}
-        </div>
+        </List>
     );
 };
 

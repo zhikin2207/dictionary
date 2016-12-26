@@ -2,8 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as wordsActions from '../../actions/dictionary-actions';
-import WordList from './word-list';
-import WordRowNew from './word-row-new';
+import WordsTable from './words-table';
+import NewWordForm from './new-word/new-word-form';
+import Paper from 'material-ui/Paper';
+
+const paperStyle = {
+    padding: 18,
+    margin: 20
+};
 
 class WordsPage extends React.Component {
     constructor(props, context) {
@@ -23,27 +29,19 @@ class WordsPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="row">
-                    <div className="col-md-4">
-                        Word
-                    </div>
-                    <div className="col-md-4">
-                        Translation
-                    </div>
-                    <div className="col-md-4">
-                        Actions
-                    </div>
-                </div>
+                <Paper zDepth={1} style={paperStyle}>
+                    <NewWordForm onAdd={this.onWordAdded} />
+                </Paper>
 
-                <WordRowNew onSave={this.onWordAdded} />
-
-                <WordList
-                    words={this.props.words} 
-                    editKey={this.props.editKey} 
-                    onWordRemove={this.onWordRemove} 
-                    onEditStart={this.onWordEditStart}
-                    onEditCancel={this.onWordEditCancel}
-                    onEditComplete={this.onWordEditComplete} />
+                <Paper zDepth={1} style={paperStyle}>
+                    <WordsTable
+                        words={this.props.words} 
+                        editKey={this.props.editKey} 
+                        onWordRemove={this.onWordRemove} 
+                        onEditStart={this.onWordEditStart}
+                        onEditCancel={this.onWordEditCancel}
+                        onEditComplete={this.onWordEditComplete} />
+                </Paper>
             </div>
         );
     }

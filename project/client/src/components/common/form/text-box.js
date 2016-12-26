@@ -1,14 +1,8 @@
 import React from 'react';
+import TextField from 'material-ui/TextField';
 
-const TextBox = ({input, label, type, meta: {touched, error}}) => {
-    const showError = touched && error;
-
-    return (
-        <div className={`form-group${showError ? ' has-error' : ''}`}>
-            <input {...input} placeholder={label} type={type} className="form-control" />
-            {showError && <p className="text-danger">{error}</p>}
-        </div>
-    );
-};
+const TextBox = ({ input, label, showError, meta: { touched, error }}) => (
+    <TextField hintText={label} errorText={showError && touched && error} {...input} />
+);
 
 export default TextBox;
