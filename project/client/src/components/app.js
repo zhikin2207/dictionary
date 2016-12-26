@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
-import Menu from './common/menu';
+import MainMenu from './common/main-menu';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Menu />
+                <MainMenu />
                 <div className="content">
                     {this.props.children}
                 </div>

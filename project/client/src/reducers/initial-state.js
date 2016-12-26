@@ -7,6 +7,7 @@ export default {
     user: {
         authenticated: false,
         uid: '',
-        displayName: ''
+        displayName: '',
+        photoUrl: ''
     }
 };

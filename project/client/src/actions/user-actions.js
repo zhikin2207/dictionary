@@ -1,9 +1,10 @@
 import * as types from './action-types';
 import firebase from 'firebase';
 
-export const userSignInSuccess = (displayName, uid) => ({
+export const userSignInSuccess = (displayName, photoUrl, uid) => ({
     type: types.USER_SIGN_IN_SUCCESS,
     displayName: displayName,
+    photoUrl: photoUrl,
     uid: uid
 });
 
@@ -39,7 +40,7 @@ export const verifyAuth = () => {
     return dispatch => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                dispatch(userSignInSuccess(user.displayName, user.uid));
+                dispatch(userSignInSuccess(user.displayName, user.photoURL, user.uid));
             } else {
                 dispatch(userSignOutSuccess());
             }
