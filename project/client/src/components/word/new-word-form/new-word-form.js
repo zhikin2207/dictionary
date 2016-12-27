@@ -5,24 +5,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextBox from '../../common/form/text-box';
 import validate from './new-word-form-validation';
 
-const buttonStyle = {
-    margin: 6
-};
-
 class NewWordForm extends React.Component {
     render() {
         return (
-            <div className="row">
+            <div className="container">
                 <form onSubmit={this.props.handleSubmit(this.props.onAdd)}>
-                    <div className="col-md-4">
+                    <div className="col-1-4">
                         <Field name="value" component={TextBox} label="Word" showError={false} />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-1-4">
                         <Field name="translation" component={TextBox} label="Translation" showError={false} />
                     </div>
-                    <div className="col-md-4">
-                        <RaisedButton type="submit" label="Add" primary={true} style={buttonStyle} />
-                        <RaisedButton type="submit" label="Reset" secondary={true} style={buttonStyle} onClick={this.props.reset}/>
+                    <div className="col-1-4">
+                        <RaisedButton type="submit" label="Add" primary={true} className="button" />
+                        <RaisedButton type="submit" label="Reset" secondary={true} className="button" onClick={this.props.reset}/>
                     </div>
                 </form>
             </div>

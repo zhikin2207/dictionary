@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import WordRow from './word-row';
 import WordRowEdit from './word-row-edit';
 

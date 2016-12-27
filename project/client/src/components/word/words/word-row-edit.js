@@ -1,11 +1,7 @@
 import React from 'react';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
-const buttonStyle = {
-    margin: 6
-};
 
 class WordRow extends React.Component{
     constructor(props, context) {
@@ -43,8 +39,8 @@ class WordRow extends React.Component{
                         fullWidth={true} />
                 </TableRowColumn>
                 <TableRowColumn>
-                    <RaisedButton label="Save" primary={true} onClick={this.onSave} style={buttonStyle} />
-                    <RaisedButton label="Cancel" secondary={true} onClick={this.props.onEditCancel} style={buttonStyle} />
+                    <RaisedButton label="Save" primary={true} onClick={this.onSave} className="button" />
+                    <RaisedButton label="Cancel" secondary={true} onClick={this.props.onEditCancel} className="button" />
                 </TableRowColumn>
             </TableRow>
         );

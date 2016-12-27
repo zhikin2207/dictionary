@@ -1,6 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Menu from './common/menu';
-import Paper from 'material-ui/Paper';
 
 class App extends React.Component {
     render() {
@@ -16,7 +15,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    children: PropTypes.object.isRequired
+    children: React.PropTypes.object.isRequired
 };
 
 export default App;

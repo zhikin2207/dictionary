@@ -1,16 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as wordsActions from '../../actions/dictionary-actions';
-import WordsTable from './words-table';
-import WordList from './word-list';
-import NewWordForm from './new-word/new-word-form';
 import Paper from 'material-ui/Paper';
-
-const paperStyle = {
-    padding: 18,
-    margin: 24
-};
+import * as wordsActions from '../../actions/dictionary-actions';
+import NewWordForm from './new-word-form/new-word-form';
+import WordsTable from './words/words-table';
 
 class WordsPage extends React.Component {
     constructor(props, context) {
@@ -30,11 +24,11 @@ class WordsPage extends React.Component {
     render() {
         return (
             <div>
-                <Paper zDepth={1} style={paperStyle}>
+                <Paper className="paper">
                     <NewWordForm onAdd={this.onWordAdded} />
                 </Paper>
 
-                <Paper zDepth={1} style={paperStyle}>
+                <Paper className="paper">
                     <WordsTable
                         words={this.props.words} 
                         editKey={this.props.editKey} 
