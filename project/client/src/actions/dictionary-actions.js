@@ -35,7 +35,7 @@ export const wordEditCancel = () => ({
 export const load = () => {
     return dispatch => {
         wordService.getAll().then((words) => {
-            dispatch(wordsLoadSuccess(words));
+            dispatch(wordsLoadSuccess(words.reverse()));
         });
     };
 };

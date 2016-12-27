@@ -6,7 +6,7 @@ import TextBox from '../../common/form/text-box';
 import validate from './new-word-form-validation';
 
 const buttonStyle = {
-    margin: 12
+    margin: 6
 };
 
 class NewWordForm extends React.Component {

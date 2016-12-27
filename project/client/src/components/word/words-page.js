@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as wordsActions from '../../actions/dictionary-actions';
 import WordsTable from './words-table';
+import WordList from './word-list';
 import NewWordForm from './new-word/new-word-form';
 import Paper from 'material-ui/Paper';
 
 const paperStyle = {
     padding: 18,
-    margin: 20
+    margin: 24
 };
 
 class WordsPage extends React.Component {

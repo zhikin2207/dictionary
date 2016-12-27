@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import WordRow from './word-row';
+import WordRowEdit from './word-row-edit';
 
 const WordsTable = ({words, editKey, onWordRemove, onEditStart, onEditCancel, onEditComplete}) => {
     return (
@@ -12,8 +13,11 @@ const WordsTable = ({words, editKey, onWordRemove, onEditStart, onEditCancel, on
                     <TableHeaderColumn>Actions</TableHeaderColumn>
                 </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={false}>
-                {words.map(word => <WordRow word={word} onRemove={onWordRemove} onEditStart={onEditStart} />)}
+            <TableBody displayRowCheckbox={false} showRowHover={true}>
+                {words.map(word => word.key !== editKey ? 
+                    <WordRow word={word} onRemove={onWordRemove} onEditStart={onEditStart} key={word.key} /> :
+                    <WordRowEdit word={word} onEditCancel={onEditCancel} onEditComplete={onEditComplete} key={word.key} />
+                )}
             </TableBody>
         </Table>
     );
