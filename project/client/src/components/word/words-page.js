@@ -25,17 +25,24 @@ class WordsPage extends React.Component {
         return (
             <div>
                 <Paper className="paper">
+                    <p className="subtitle">New word</p>
                     <NewWordForm onAdd={this.onWordAdded} />
                 </Paper>
 
                 <Paper className="paper">
-                    <WordsTable
-                        words={this.props.words} 
-                        editKey={this.props.editKey} 
-                        onWordRemove={this.onWordRemove} 
-                        onEditStart={this.onWordEditStart}
-                        onEditCancel={this.onWordEditCancel}
-                        onEditComplete={this.onWordEditComplete} />
+                    {this.props.words.length > 0 &&
+                        <WordsTable
+                            words={this.props.words} 
+                            editKey={this.props.editKey} 
+                            onWordRemove={this.onWordRemove} 
+                            onEditStart={this.onWordEditStart}
+                            onEditCancel={this.onWordEditCancel}
+                            onEditComplete={this.onWordEditComplete} />
+                    }
+
+                    {this.props.words.length === 0 && 
+                        <p className="subtitle">Your words list is empty</p>
+                    }
                 </Paper>
             </div>
         );

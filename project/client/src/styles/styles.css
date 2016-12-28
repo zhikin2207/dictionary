@@ -1,6 +1,17 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
 .paper {
 	padding: 18px;
 	margin: 24px;
+}
+
+.paper>.subtitle {
+	font-size: 15px;
+	color: rgb(103, 58, 183);
 }
 
 .button {

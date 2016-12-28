@@ -17,6 +17,10 @@ class WordRow extends React.Component{
         this.onTranslationChanged = this.onTranslationChanged.bind(this);
     }
 
+    componentDidMount() {
+        this._firstElement.focus();
+    }
+
     render() {
         return (
             <TableRow>
@@ -25,17 +29,14 @@ class WordRow extends React.Component{
                         name="value" 
                         value={this.state.value} 
                         onChange={this.onValueChanged} 
-                        floatingLabelText="Word" 
-                        floatingLabelFixed={true}
-                        fullWidth={true} />
+                        fullWidth={true} 
+                        ref={_ => this._firstElement = _}/>
                 </TableRowColumn>
                 <TableRowColumn>
                     <TextField 
                         name="translation" 
                         value={this.state.translation} 
                         onChange={this.onTranslationChanged} 
-                        floatingLabelText="Translation" 
-                        floatingLabelFixed={true} 
                         fullWidth={true} />
                 </TableRowColumn>
                 <TableRowColumn>
