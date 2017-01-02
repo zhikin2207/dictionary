@@ -1,19 +1,21 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Menu from './common/menu';
 
 class App extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div>
                 <Menu />
-                {this.props.children}
+                <div>
+                    {this.props.children}
+                </div>
             </div>
         );
     }
 }
 
 App.propTypes = {
-    children: PropTypes.object.isRequired
+    children: React.PropTypes.object.isRequired
 };
 
 export default App;

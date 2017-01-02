@@ -1,71 +1,76 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Paper from 'material-ui/Paper';
+import CircularProgress from 'material-ui/CircularProgress';
 import * as wordsActions from '../../actions/dictionary-actions';
-import WordList from './word-list';
-import WordRowNew from './word-row-new';
+import NewWordForm from './new-word-form/new-word-form';
+import Words from './words/words';
 
 class WordsPage extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         this.onWordRemove = this.onWordRemove.bind(this);
-        this.onWordChange = this.onWordChange.bind(this);
-        this.onWordCancelChange = this.onWordCancelChange.bind(this);
-        this.onWordSave = this.onWordSave.bind(this);
-        this.onWordAdd = this.onWordAdd.bind(this);
+        this.onWordEditStart = this.onWordEditStart.bind(this);
+        this.onWordEditCancel = this.onWordEditCancel.bind(this);
+        this.onWordEditComplete = this.onWordEditComplete.bind(this);
+        this.onWordAdded = this.onWordAdded.bind(this);
     }
 
     componentDidMount() {
         this.props.dictionaryActions.load();
     }
 
+    render() {
+        return (
+            <div>
+                <Paper className="paper">
+                    <p className="subtitle">New word</p>
+                    <NewWordForm onAdd={this.onWordAdded} />
+                </Paper>
+
+                <Paper className="paper">
+                    {this.props.wordsLoading &&
+                        <CircularProgress />
+                    }
+
+                    {!this.props.wordsLoading && this.props.words.length > 0 &&
+                        <Words
+                            words={this.props.words}
+                            editKey={this.props.editKey}
+                            onWordRemove={this.onWordRemove}
+                            onEditStart={this.onWordEditStart}
+                            onEditCancel={this.onWordEditCancel}
+                            onEditComplete={this.onWordEditComplete} />
+                    }
+
+                    {!this.props.wordsLoading && this.props.words.length === 0 &&
+                        <p className="subtitle">Your words list is empty</p>
+                    }
+                </Paper>
+            </div>
+        );
+    }
+
     onWordRemove(key) {
         this.props.dictionaryActions.remove(key);
     }
 
-    onWordChange(key) {
+    onWordEditStart(key) {
         this.props.dictionaryActions.wordEditStart(key);
     }
 
-    onWordCancelChange() {
+    onWordEditCancel() {
         this.props.dictionaryActions.wordEditCancel();
     }
 
-    onWordSave(word) {
+    onWordEditComplete(word) {
         this.props.dictionaryActions.update(word);
     }
 
-    onWordAdd(word) {
+    onWordAdded(word) {
         this.props.dictionaryActions.add(word);
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="row">
-                    <div className="col-md-4">
-                        Word
-                    </div>
-                    <div className="col-md-4">
-                        Translation
-                    </div>
-                    <div className="col-md-4">
-                        Actions
-                    </div>
-                </div>
-
-                <WordRowNew onSave={this.onWordAdd} />
-
-                <WordList
-                    words={this.props.words} 
-                    editKey={this.props.editKey} 
-                    onWordRemove={this.onWordRemove} 
-                    onWordChange={this.onWordChange}
-                    onWordCancelChange={this.onWordCancelChange}
-                    onWordSave={this.onWordSave} />
-            </div>
-        );
     }
 }
 
@@ -77,7 +82,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
     words: state.dictionary.words,
     editKey: state.dictionary.editKey,
-    uid: state.user.uid
+    uid: state.user.uid,
+    wordsLoading: state.dictionary.loading
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordsPage);
