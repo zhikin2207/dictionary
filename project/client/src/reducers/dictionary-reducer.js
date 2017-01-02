@@ -9,8 +9,8 @@ export default function(state = initialState.dictionary, action) {
             const index = state.words.findIndex(word => word.key === action.key);
 
             return Object.assign({}, state, { words: [
-                    ...state.words.slice(0, index),
-                    ...state.words.slice(index + 1)
+                ...state.words.slice(0, index),
+                ...state.words.slice(index + 1)
             ]});
         }
         case types.WORD_EDIT_START:

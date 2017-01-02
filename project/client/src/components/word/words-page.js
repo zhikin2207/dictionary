@@ -77,7 +77,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
     words: state.dictionary.words,
     editKey: state.dictionary.editKey,
-    uid: state.user.uid
+    uid: state.user.uid,
+    wordsLoading: state.dictionary.loading
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordsPage);

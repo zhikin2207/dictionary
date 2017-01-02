@@ -3,6 +3,10 @@ import WordService from '../firebase/word-service';
 
 const wordService = new WordService();
 
+export const wordsLoadStart = () => ({
+    type: types.WORDS_LOAD_START
+});
+
 export const wordsLoadSuccess = (words) => ({
     type: types.WORDS_LOAD_SUCCESS,
     words: words
@@ -34,6 +38,8 @@ export const wordEditCancel = () => ({
 
 export const load = () => {
     return dispatch => {
+        dispatch(wordsLoadStart());
+
         wordService.getAll().then((words) => {
             dispatch(wordsLoadSuccess(words.reverse()));
         });
