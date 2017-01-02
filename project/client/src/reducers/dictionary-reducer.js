@@ -1,10 +1,12 @@
-import * as types from '../actions/action-types';
 import initialState from './initial-state';
+import * as types from '../actions/action-types';
 
 export default function(state = initialState.dictionary, action) {
     switch(action.type) {
+        case types.WORDS_LOAD_START:
+            return Object.assign({}, state, { loading: true });
         case types.WORDS_LOAD_SUCCESS:
-            return Object.assign({}, state, { words: action.words });
+            return Object.assign({}, state, { words: action.words, loading: false });
         case types.WORD_REMOVE_SUCCESS: {
             const index = state.words.findIndex(word => word.key === action.key);
 

@@ -5,8 +5,8 @@
 [ ] Implement cards game
 
 ## Tasks
-[ ] Change reducers to be awesome
+[X] Change reducers to be awesome
 [ ] Move project to create react app
-[ ] Add preloader for async states
-[ ] Make words table responsive
+[X] Add preloader for async states
+[X] Make words table responsive
 [ ] Remove autofill from inputs

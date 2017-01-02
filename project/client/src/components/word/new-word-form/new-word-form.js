@@ -1,7 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import TextBox from '../../common/form/text-box';
 import validate from './new-word-form-validation';
 
@@ -11,14 +10,14 @@ class NewWordForm extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.props.onAdd)}>
                 <div className="row">
                     <div className="col-xs-12 col-md-4">
-                        <Field name="value" component={TextBox} label="Word" showError={false} />
+                        <Field name="value" component={TextBox} label="Word" showError={true} />
                     </div>
                     <div className="col-xs-12 col-md-4">
-                        <Field name="translation" component={TextBox} label="Translation" showError={false} />
+                        <Field name="translation" component={TextBox} label="Translation" showError={true} />
                     </div>
                     <div className="col-xs-12 col-md-4">
                         <RaisedButton type="submit" label="Add" primary={true} className="button" />
-                        <RaisedButton type="submit" label="Reset" secondary={true} className="button" onClick={this.props.reset}/>
+                        <RaisedButton type="button" label="Reset" secondary={true} className="button" onClick={this.props.reset}/>
                     </div>
                 </div>
             </form>

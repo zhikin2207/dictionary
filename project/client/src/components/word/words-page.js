@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Paper from 'material-ui/Paper';
+import CircularProgress from 'material-ui/CircularProgress';
 import * as wordsActions from '../../actions/dictionary-actions';
 import NewWordForm from './new-word-form/new-word-form';
-import WordsTable from './words/words-table';
+import Words from './words/words';
 
 class WordsPage extends React.Component {
     constructor(props, context) {
@@ -30,17 +31,21 @@ class WordsPage extends React.Component {
                 </Paper>
 
                 <Paper className="paper">
-                    {this.props.words.length > 0 &&
-                        <WordsTable
-                            words={this.props.words} 
-                            editKey={this.props.editKey} 
-                            onWordRemove={this.onWordRemove} 
+                    {this.props.wordsLoading &&
+                        <CircularProgress />
+                    }
+
+                    {!this.props.wordsLoading && this.props.words.length > 0 &&
+                        <Words
+                            words={this.props.words}
+                            editKey={this.props.editKey}
+                            onWordRemove={this.onWordRemove}
                             onEditStart={this.onWordEditStart}
                             onEditCancel={this.onWordEditCancel}
                             onEditComplete={this.onWordEditComplete} />
                     }
 
-                    {this.props.words.length === 0 && 
+                    {!this.props.wordsLoading && this.props.words.length === 0 &&
                         <p className="subtitle">Your words list is empty</p>
                     }
                 </Paper>
