@@ -1,12 +1,9 @@
 ﻿const validate = values => {
     const errors = {};
-    const requiredFields = ['value', 'translation'];
 
-    requiredFields.forEach(field => {
-        if (!values[field]) {
-            errors[field] = 'Required';
-        }
-    });
+    if (!values.translation) {
+        errors.translation = 'Field can not be empty';
+    }
 
     return errors;
 };
