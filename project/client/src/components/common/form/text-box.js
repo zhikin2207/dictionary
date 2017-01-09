@@ -6,7 +6,6 @@ const TextBox = ({ input, label, showError, meta: { touched, error }}) => (
         fullWidth={true}
         floatingLabelText={label}
         errorText={showError && touched && error}
-        autocomplete={false}
         {...input} />
 );
 
