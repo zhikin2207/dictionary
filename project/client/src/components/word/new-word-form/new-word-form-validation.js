@@ -1,12 +1,13 @@
 ﻿const validate = values => {
     const errors = {};
-    const requiredFields = ['value', 'translation'];
 
-    requiredFields.forEach(field => {
-        if (!values[field]) {
-            errors[field] = 'Required';
-        }
-    });
+    if (!values.value || !/^(?!\s*$).+/.test(values.value)) {
+        errors.value = 'Word field is required';
+    }
+
+    if (!values.translation || !/^(?!\s*$).+/.test(values.translation)) {
+        errors.translation = 'Translation field is required';
+    }
 
     return errors;
 };
