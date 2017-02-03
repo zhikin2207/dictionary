@@ -3,24 +3,39 @@ import {connect} from 'react-redux';
 
 export default function(ComposedComponent) {
     class Authentication extends React.Component {
-        componentWillMount() {
-            const authenticated = this.props.authenticated || this.hasLocalStorageUser();
+        constructor(props, context) {
+            super(props, context);
 
-            if (!authenticated) {
+            this.authenticated = false;
+        }
+
+        componentWillMount() {
+            this.authenticated = this.props.authenticated || this.hasLocalStorageUser();
+
+            if (!this.authenticated) {
                 this.context.router.push('/signin');
             }
         }
 
         componentWillUpdate(nextProps) {
-            const authenticated = nextProps.authenticated || this.hasLocalStorageUser();
+            this.authenticated = nextProps.authenticated || this.hasLocalStorageUser();
 
-            if (!authenticated) {
+            if (!this.authenticated) {
+                this.context.router.push('/signin');
+            }
+        }
+
+        componentWillReceiveProps(nextProps) {
+            this.authenticated = nextProps.authenticated || this.hasLocalStorageUser();
+
+            if (!this.authenticated) {
                 this.context.router.push('/signin');
             }
         }
 
         render() {
-            return <ComposedComponent {...this.props} />;
+            let composedComponent = this.authenticated && <ComposedComponent {...this.props} />;
+            return composedComponent;
         }
 
         hasLocalStorageUser() {

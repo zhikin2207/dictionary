@@ -4,26 +4,38 @@ import {bindActionCreators} from 'redux';
 import {Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
+import {browserHistory} from 'react-router'
 import * as userActions from '../../actions/user-actions';
 
-const appBarStyle = {
-    backgroundColor: '#673AB7'
+const styles = {
+    title: {
+        cursor: 'pointer'
+    },
+    appBar: {
+        backgroundColor: '#673AB7'
+    }
 };
 
-const Menu = ({authenticated, displayName, auth}) => {
-    return (
-        <AppBar 
-            style={appBarStyle} 
-            title="My Dictionary" 
-            showMenuIconButton={false}
-            iconElementRight={
-                authenticated ? 
-                <FlatButton label="Sign Out" containerElement={<Link to="/signout" />} /> :
-                <FlatButton label="Sign In" onClick={auth.signIn} />
-            }>
-        </AppBar>
-    );
-};
+class Menu extends React.Component {
+    render() {
+        return (
+            <AppBar 
+                style={styles.appBar} 
+                title={<span style={styles.title}>Home</span>} 
+                showMenuIconButton={false}
+                onTitleTouchTap={this.onTitleClick}
+                iconElementRight={
+                    this.props.authenticated
+                        ? <FlatButton label="Sign Out" containerElement={<Link to="/signout" />} />
+                        : <FlatButton label="Sign In" onClick={this.props.auth.signIn} />
+                } />
+        );
+    }
+
+    onTitleClick() {
+        browserHistory.push('/');
+    }
+}
 
 const mapDispatchToProps = (dispatch) => ({
     auth: bindActionCreators(userActions, dispatch)

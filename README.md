@@ -12,4 +12,5 @@
 [ ] Remove autofill from inputs
 [ ] Check the length of the words
 [ ] Create home page
-[ ] Redirecto to home page after signin
+[X] Redirecto to home page after signin
+[ ] Handle promise errors

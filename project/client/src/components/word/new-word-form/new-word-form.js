@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {SubmissionError} from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
+
 import TextBox from '../../common/form/text-box';
 import validate from './new-word-form-validation';
 

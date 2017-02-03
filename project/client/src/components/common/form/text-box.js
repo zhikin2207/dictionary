@@ -1,12 +1,17 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
-const TextBox = ({ input, label, showError, meta: { touched, error }}) => (
-    <TextField
-        fullWidth={true}
-        floatingLabelText={label}
-        errorText={showError && touched && error}
-        {...input} />
-);
+class TextBox extends React.Component
+{
+    render() {
+        return (
+            <TextField
+            fullWidth={true}
+            floatingLabelText={this.props.label}
+            errorText={this.props.showError && this.props.touched && this.props.error}
+            {...this.props.input} />
+        );
+    }
+}
 
 export default TextBox;

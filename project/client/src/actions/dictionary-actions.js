@@ -40,7 +40,7 @@ export const load = () => {
     return dispatch => {
         dispatch(wordsLoadStart());
 
-        wordService.getAll().then((words) => {
+        wordService.getAll().then(words => {
             dispatch(wordsLoadSuccess(words.reverse()));
         });
     };

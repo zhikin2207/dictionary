@@ -1,5 +1,6 @@
-import * as types from './action-types';
+import {browserHistory} from 'react-router';
 import firebase from 'firebase';
+import * as types from './action-types';
 
 export const userSignInSuccess = (displayName, photoUrl, uid) => ({
     type: types.USER_SIGN_IN_SUCCESS,
@@ -20,6 +21,7 @@ export const signIn = () => {
             const user = result.user;
 
             dispatch(userSignInSuccess(user.displayName, user.uid));
+            browserHistory.push('/');
         }).catch(error => {
             // TODO: An error happened.
         }); 
@@ -32,18 +34,6 @@ export const signOut = () => {
             dispatch(userSignOutSuccess());
         }).catch(error => {
             // TODO: An error happened.
-        });
-    };
-};
-
-export const verifyAuth = () => {
-    return dispatch => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                dispatch(userSignInSuccess(user.displayName, user.photoURL, user.uid));
-            } else {
-                dispatch(userSignOutSuccess());
-            }
         });
     };
 };

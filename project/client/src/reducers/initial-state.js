@@ -1,8 +1,9 @@
+import {GameStatus} from '../config';
+
 export default {
     dictionary: {
         editKey: '',
-        words: [
-        ],
+        words: [],
         loading: false
     },
     user: {
@@ -10,5 +11,12 @@ export default {
         uid: '',
         displayName: '',
         photoUrl: ''
+    },
+    game: {
+        words: [],
+        index: 0,
+        status: GameStatus.New,
+        correctCount: 0,
+        wrongCount: 0
     }
 };

@@ -7,7 +7,8 @@ class HomePage extends React.Component {
         return (
             <div>
                 <Paper className="paper">
-                    Go to <Link to="words">Words</Link>
+                    Go to <Link to="/words">Words page</Link><br />
+                    Go to <Link to="/games">Games page</Link><br />
                 </Paper>
             </div>
         );

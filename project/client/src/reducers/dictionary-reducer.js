@@ -10,6 +10,11 @@ export default function(state = initialState.dictionary, action) {
         case types.WORD_REMOVE_SUCCESS: {
             const index = state.words.findIndex(word => word.key === action.key);
 
+            //TODO: temprary fix
+            if (index === -1) {
+                return state;
+            }
+
             return Object.assign({}, state, { words: [
                 ...state.words.slice(0, index),
                 ...state.words.slice(index + 1)
